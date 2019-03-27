@@ -21,15 +21,20 @@ namespace Assignment_4__C0731909
         }
 
 
-        static void Download()
+        static async  void Download()
         {
-            Task.Run(() => {
-                
-                    Thread.Sleep(3000);
-                    Console.WriteLine("Download  Complete");
-                });
-            
+            await Network.Download();
+            Console.WriteLine("Download Complete");
     }
+    }
+    //imaginary external network library
+
+    class Network
+    {
+        static public Task Download()
+        {
+            return Task.Run(() => Thread.Sleep(3000));
+        }
     }
 }
 
