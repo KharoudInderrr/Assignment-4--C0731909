@@ -14,7 +14,7 @@ namespace Assignment_4__C0731909
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Download complete");
+            Console.WriteLine("Downloading file");
             Download();
             Console.ReadLine();
 
@@ -23,8 +23,11 @@ namespace Assignment_4__C0731909
 
         static void Download()
         {
-            Thread.Sleep(3000);
-            Console.WriteLine("Download  Complete");
+            Task.Run(() => { 
+            {
+                Thread.Sleep(3000);
+                Console.WriteLine("Download  Complete");
+            };
         }
     }
 }
