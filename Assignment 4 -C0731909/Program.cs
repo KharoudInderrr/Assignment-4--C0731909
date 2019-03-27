@@ -23,11 +23,12 @@ namespace Assignment_4__C0731909
 
         static void Download()
         {
-            Task.Run(() => { 
-            {
-                Thread.Sleep(3000);
-                Console.WriteLine("Download  Complete");
-            };
-        }
+            Task.Run(() => {
+                
+                    Thread.Sleep(3000);
+                    Console.WriteLine("Download  Complete");
+                });
+            
+    }
     }
 }
