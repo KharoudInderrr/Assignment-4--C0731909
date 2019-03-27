@@ -4,41 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Net.Http;
 
-namespace Assignment_4__C0731909
+namespace LearningAsyncAwayStart
 {
-
-    // Student id : C0731909     Student name - Inderjeet Singh
-    //Student id: C0726115       Student name - Robin bhatia
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Downloading file");
+            Console.WriteLine("downloading file");
             Download();
             Console.ReadLine();
-            
+
         }
 
-
-        static async  void Download()
+        static void Download()
         {
+            Network.Download((message) => Console.WriteLine("Download complete " + message));
+        }
+    }
 
-            HttpClient client = new HttpClient();
-             var data = await client.GetStringAsync("http://ibm.com");
-          
-            Console.WriteLine("Download Complete" + data);
-    }
-    }
-    //imaginary external network library
+    // Imaginary external network library
 
     class Network
     {
-        static public Task Download()
+        static public void Download(Action<String> callback)
         {
-            return Task.Run(() => Thread.Sleep(3000));
+            Task.Run(() => {
+                Thread.Sleep(3000);
+                callback("completed");
+            });
         }
     }
 }
-
