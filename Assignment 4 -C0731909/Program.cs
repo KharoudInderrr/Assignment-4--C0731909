@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Assignment_4__C0731909
 {
@@ -17,14 +18,17 @@ namespace Assignment_4__C0731909
             Console.WriteLine("Downloading file");
             Download();
             Console.ReadLine();
-
+            
         }
 
 
         static async  void Download()
         {
-            await Network.Download();
-            Console.WriteLine("Download Complete");
+
+            HttpClient client = new HttpClient();
+             var data = await client.GetStringAsync("http://ibm.com");
+          
+            Console.WriteLine("Download Complete" + data);
     }
     }
     //imaginary external network library
